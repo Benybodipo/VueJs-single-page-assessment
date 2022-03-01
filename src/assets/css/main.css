@@ -1,0 +1,286 @@
+:root
+{
+    --gray-line: #ced4da;
+    --blue: #1f8ceb; 
+    --green: #1DBA9D;
+    --gray-bg: #f7f8fa;
+}
+
+.gray-bg
+{
+    background-color: var(--gray-bg);
+}
+
+/*================== 
+    - HEADER -
+==================*/
+
+header {
+ border-bottom: 1px solid var(--gray-line);
+}
+
+.navbar-brand img
+{
+    height: 27.34px;
+    width: auto;
+}
+
+.notification
+{
+    padding-right: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.notification .nav-link
+{
+    padding: 0;
+    position: relative;
+    font-size: 1.3rem;
+    color: inherit;
+}
+
+.notification .nav-link::before
+{
+    content: '';
+    display: inline-block;
+    position: absolute;
+    top: 3px;
+    right: 7px;
+    width: 8px;
+    height: 8px;
+    background-color: var(--blue);
+    border-radius: 50%;
+}
+.profile
+{
+    border-left: 1px solid var(--gray-line);
+    padding-left: 20px;
+}
+
+ .profile-link
+ {
+     display: inline-block;
+     padding-left: 15px;
+ }
+.profile-link img
+{
+    width: 45px;
+    border-radius: 50%;
+    float: left;
+    margin-right: 5px;
+}
+
+.profile-info
+{
+    display: inline-block;
+    line-height: 1;
+}
+
+.profile-info .name
+{
+    color: black;
+    font-weight: 700;
+}
+
+/*================== 
+    - ASIDE NAV -
+==================*/
+
+aside
+{
+    border-right: 1px solid var(--gray-line);
+    background-color: #fff;
+}
+
+aside .list-group-item
+{
+    border: none;
+    border-radius: 0.25rem;
+}
+
+/*================== 
+    - MAIN SECTIOM -
+==================*/
+
+#main-container
+{
+    /* height: calc(100vh - 57px); */
+    background-color: #f7f8fa;
+}
+
+#main-container > div
+{
+    height: 100%;
+}
+
+#main-container section
+{
+    padding-top: 25px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid var(--gray-line);
+}
+
+#top-section h1{
+    font-weight: bold;
+}
+
+.component
+{
+    border: 1px solid var(--gray-line) ;
+    border-radius: 10px;
+    background: #fff;
+    height: 100%;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    box-shadow: 0 .125rem .25rem rgba(0,0,0,.075)!important;
+}
+
+.component .header
+{
+    border-bottom: 1px solid var(--gray-line);
+}
+
+.component .header h5
+{
+    font-weight: bold;
+}
+
+/* Account section */
+
+.account
+{
+    padding: 15px;
+    border: 1px solid var(--gray-line) ;
+    border-radius: 10px;
+    background: #fff;
+    
+}
+
+.account .status
+{
+    display: inline-block;
+    font-size: 10px;
+    color: var(--green);
+    padding: 1px 7px 2px 7px;
+    background: #EAF6F6;
+    border-radius: 10px;
+    margin-left: 10px;
+
+}
+
+.account.selected
+{
+    background-color: #D3EAF9;
+    border-color: #1f8ceb;
+}
+
+.account.selected .status
+{
+    background: #fff;
+}
+.account-name
+{
+    color: var(--blue) ;
+}
+
+.current-balance .gray-bg, 
+.payment-method .gray-bg
+{
+    border-radius: 5px;
+}
+
+.current-balance > div,
+.payment-method > div
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 100%;
+    padding: 15px;
+}
+
+.current-balance .body,
+.payment-method .body
+{
+    display: flex;
+    font-size: 12px;
+}
+
+.current-balance .body .ic,
+.payment-method .body .ic
+{
+    display: inline-block;
+    margin-right: 10px;
+    font-size: 1.2rem;
+}
+
+.payment-method .body .ic,
+.payment-method .body .highlight
+{
+    color: var(--green);
+    font-weight: bold;
+}
+
+.current-balance .heading
+{
+    display: block;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.current-balance .price
+{
+    display: block;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: gray;
+}
+
+.products-list
+{
+    border: none;
+}
+
+.products-list li
+{
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.products-list li .svg-inline--fa
+{
+    display: inline-block;
+    margin-right: 15px;
+}
+
+#billing-history-section .component .header,
+#billing-history-section .component table td:first-child,
+#billing-history-section .component table th:first-child
+{
+    padding-left: 25px;
+}
+
+#billing-history-section .component .header,
+#billing-history-section .component table td:last-child,
+#billing-history-section .component table th:last-child
+{
+    padding-right: 25px;
+}
+
+.table>:not(:first-child)
+{
+    border-top: 2px solid var(--gray-line);
+}
+
+.download-icon
+{
+    color: var(--blue);
+    transform: rotate(90deg);
+    font-size: 19px; 
+}
