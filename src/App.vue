@@ -9,61 +9,35 @@
         <aside class="col-sm-2">
           <ul class="list-group">
             <li class="list-group-item">
-              <fa :icon="['fas', 'house']" />
-              Home
+              <router-link to="/" aria-current="true" class="">
+                <fa :icon="['fas', 'house']" />
+                Home
+              </router-link>
             </li>
             <li class="list-group-item active" aria-current="true">
-              <fa :icon="['fas', 'wallet']" />
-              Billing
+              <router-link to="/billing" aria-current="true" class="">
+                <fa :icon="['fas', 'wallet']" />
+                Billing
+              </router-link>
             </li>
           </ul>
         </aside>
         <main class="col-sm-10" >
-          <!-- Top Section -->
-          <section class="row bg-white" id="top-section">
-            <h1 class="mb-0">Billing</h1>
-            <p class="m-0">Overview your accounts</p>
-          </section>
-          <!-- Accounts section  -->
-          <section id="account-section" class="row">
-              <AccountItem />
-              <AccountItem />
-              <AccountItem />
-              <AccountItem />
-          </section>
-          <section class="row row-eq-height" id="payment-and-products-section">
-            <div class="col-sm-7">
-              <PaymentDetails />
-            </div>
-            <div class="col-sm-5">
-              <MyProducts />
-            </div>
-          </section>
-           <section class="row" id="billing-history-section">
-            <div class="col-12">
-              <BillingHistory />
-            </div>
-           </section>
+          <!-- Display the pages here -->
+            <router-view />
+          <!-- /Display the pages here -->
         </main>
       </div>
     </div>
 </template>
 
 <script>
-import NavBar from './components/Navbar.vue'
-import AccountItem from './components/AccountItem.vue'
-import PaymentDetails from './components/PaymentDetails.vue'
-import MyProducts from './components/MyProducts.vue'
-import BillingHistory from './components/BillingHistory.vue'
+import NavBar from './components/Navbar.vue';
 
 export default {
   name: 'App',
   components: {
-    'Navbar': NavBar,
-    'AccountItem': AccountItem,
-    'PaymentDetails': PaymentDetails,
-    'MyProducts': MyProducts,
-    'BillingHistory': BillingHistory
+    'Navbar': NavBar
   }
 }
 </script>

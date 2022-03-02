@@ -6,11 +6,13 @@ import { faBell } from '@fortawesome/free-regular-svg-icons'
 
 import  './assets/css/main.css'
 import App from './App.vue'
+import router from './router'
 
 
 library.add(faHouse, faLightbulb, faBell, faWallet, faLock, faLaptop, faDownload, faPhone, faPhoneAlt, faArrowDown, faArrowRightToBracket, faNetworkWired, faDiagramProject, faPoundSign, )
 
 
 createApp(App)
+.use(router)
 .component('fa', FontAwesomeIcon)
 .mount('#app')
