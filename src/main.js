@@ -5,6 +5,7 @@ import { faLightbulb, faHouse, faWallet, faLock, faLaptop, faDownload, faPhone, 
 import { faBell } from '@fortawesome/free-regular-svg-icons'
 
 import  './assets/css/main.css'
+import  './assets/js/main.js'
 import App from './App.vue'
 import router from './router'
 
