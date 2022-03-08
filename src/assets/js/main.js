@@ -8,7 +8,7 @@ window.onload = function (){
             element.classList.add('active')
         element.addEventListener('click', highlightActiveLink, false)
     });
-
+    
     function highlightActiveLink() {
         let isActive = this.children[0].classList.contains('router-link-active');
 
@@ -18,5 +18,6 @@ window.onload = function (){
 
         if (isActive)
             this.classList.add('active');
+            
     }
 }

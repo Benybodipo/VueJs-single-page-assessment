@@ -15,7 +15,7 @@
               </router-link>
             </li>
             <li class="list-group-item i2">
-              <router-link to="/billing" aria-current="true">
+              <router-link :to="{path: ('/billing/'+accounts[0].account_id)}" aria-current="true">
                 <fa :icon="['fas', 'wallet']" />
                 Billing
               </router-link>
@@ -30,7 +30,7 @@
         </aside>
         <main class="col-sm-10">
           <!-- Display the pages here -->
-            <router-view/>
+            <router-view :data="accounts"/>
           <!-- /Display the pages here -->
         </main>
       </div>
@@ -38,6 +38,7 @@
 </template>
 
 <script>
+// import axios from 'axios'
 import NavBar from './components/Navbar.vue';
 
 export default {
@@ -45,23 +46,26 @@ export default {
   components: {
     'Navbar': NavBar
   },
+  
   data() {
     return {
-      users: []
+      accounts: undefined,
     }
   },
-  mounted() {
-    fetch('http://localhost:3000/users')
-    .then((res) => {
-      return res.json()
+  created() {
+    fetch('http://localhost:3000/accounts')
+    .then(async (res) => {
+      const data = await res.json();
+
+      if (!res.ok) {
+        const error = (data && data.message) || res.statusText;
+        return Promise.reject(error);
+      }
+      this.accounts = data;
     })
-    .then((data) => {
-      this.users = data
-      console.log(data);
-    })
-    .catch((err) => {
-      console.log(err.message);
-    })
+  },
+  mounted(){
+    
   }
 }
 </script>

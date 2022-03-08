@@ -8,20 +8,16 @@
         </div>
         <div class="row p-0">
             <div class="col-sm-12" style="padding-left: 40px; padding-right: 40px;">
-                <ul class="list-group products-list pl-3 pr-3">
-                    <li class="list-group-item">
-                        <fa :icon="['fas', 'phone']" />
-                        VoIP - 23698547
-                    </li>
-                    <li class="list-group-item">
-                        <fa :icon="['fas', 'diagram-project']" />
-                        Fiber - SW29BE
-                    </li>
-                    <li class="list-group-item">
-                        <fa :icon="['fas', 'laptop']" />
-                        Website - www.google.com
-                    </li>
-                </ul>
+                <div v-if="products">
+                    <ul class="list-group products-list pl-3 pr-3">
+                        <li class="list-group-item" v-for="product in products" :key="product.product_id">
+                            <fa :icon="['fas', 'phone']" v-if="product.product_kind.toLowerCase().trim() == 'voip' || product.product_kind.toLowerCase().trim() == 'telco'"/>
+                            <fa :icon="['fas', 'diagram-project']" v-else-if="product.product_kind.toLowerCase().trim() == 'fiber'"/>
+                            <fa :icon="['fas', 'laptop']" v-else/>
+                            {{product.product_kind}} - {{product.product_detail}}
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
@@ -29,6 +25,26 @@
 
 <script>
     export default {
-        name: 'MyProducts'
+        name: 'MyProducts',
+        props: ['data'],
+        data() {
+            return {
+                products: null
+            }
+        },
+        mounted() {
+            setTimeout(() => {
+                this.products  = this.data[0].products;
+            }, 200);
+        },
+        watch: {
+        $route (to, from){
+            console.log(to);
+            // console.log(from);
+            setTimeout(() => {
+                this.products  = this.data[0].products;
+            }, 100);
+        }
+    }
     }
 </script>

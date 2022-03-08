@@ -10,7 +10,7 @@ const routes = [
         component: Home
     },
     {
-        path: '/billing',
+        path: '/billing/:account_id',
         name: "Billing",
         component: Billing
     },

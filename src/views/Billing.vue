@@ -6,18 +6,17 @@
     </section>
     <!-- Accounts section  -->
     <section id="account-section" class="row">
-        <AccountItem />
-        <AccountItem />
-        <AccountItem />
-        <AccountItem />
+        <!-- <Accounts :data="accounts" /> -->
+        <h1 v-if="!accounts">Loading...</h1>
+        <AccountItem v-for="account in data" :key="account.account_id" :data="account" data-name="ben"/>
     </section>
     <section class="row row-eq-height" id="payment-and-products-section">
-    <div class="col-sm-7">
-        <PaymentDetails />
-    </div>
-    <div class="col-sm-5">
-        <MyProducts />
-    </div>
+        <div class="col-sm-7">
+            <PaymentDetails :data="account"/>
+        </div>
+        <div class="col-sm-5">
+            <MyProducts :data="account"/>
+        </div>
     </section>
     <section class="row" id="billing-history-section">
     <div class="col-12">
@@ -32,12 +31,41 @@ import MyProducts from '../components/MyProducts.vue'
 import BillingHistory from '../components/BillingHistory.vue'
 
 export default {
-  name: 'Billing',
-  components: {
-    'AccountItem': AccountItem,
-    'PaymentDetails': PaymentDetails,
-    'MyProducts': MyProducts,
-    'BillingHistory': BillingHistory
-  }
+    props: ['account_id', 'data'],
+    name: 'Billing',
+    components: {
+        'AccountItem': AccountItem,
+        'PaymentDetails': PaymentDetails,
+        'MyProducts': MyProducts,
+        'BillingHistory': BillingHistory
+    },
+    data() {
+        return {
+            accounts: null,
+            account: null,
+            products: null,
+            single_account: null,
+            id: this.$route.params.account_id
+        }
+    },
+    mounted() {
+        setTimeout(() => {
+            this.accounts = this.data,
+            this.account = this.data.filter((acc) => {
+                return (acc.account_id == this.$route.params.account_id)
+            });
+        },
+        100);
+    },
+    watch: {
+        $route (to, from){
+            console.log(to);
+            console.log(from);
+            this.account = this.accounts.filter((acc) => {
+                return (acc.account_id == this.$route.params.account_id)
+            }); 
+            console.log(this.account);
+        }
+    }
 }
 </script>
