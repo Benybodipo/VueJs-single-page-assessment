@@ -48,23 +48,23 @@ export default {
             id: this.$route.params.account_id
         }
     },
-    mounted() {
-        setTimeout(() => {
-            this.accounts = this.data,
+    methods: {
+        getData(){
             this.account = this.data.filter((acc) => {
                 return (acc.account_id == this.$route.params.account_id)
             });
+        }
+    },
+    mounted() {
+        setTimeout(() => {
+            this.accounts = this.data;
+            this.getData();
         },
         100);
     },
     watch: {
         $route (to, from){
-            console.log(to);
-            console.log(from);
-            this.account = this.accounts.filter((acc) => {
-                return (acc.account_id == this.$route.params.account_id)
-            }); 
-            console.log(this.account);
+            this.getData(); 
         }
     }
 }

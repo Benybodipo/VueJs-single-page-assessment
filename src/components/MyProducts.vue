@@ -32,18 +32,19 @@
                 products: null
             }
         },
+        methods: {
+            getData(delay) {
+                setTimeout(() => {
+                    this.products  = this.data[0].products;
+                }, delay)
+            }
+        },
         mounted() {
-            setTimeout(() => {
-                this.products  = this.data[0].products;
-            }, 200);
+            this.getData(200);
         },
         watch: {
         $route (to, from){
-            console.log(to);
-            // console.log(from);
-            setTimeout(() => {
-                this.products  = this.data[0].products;
-            }, 100);
+            this.getData(100);
         }
     }
     }

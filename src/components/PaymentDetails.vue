@@ -57,21 +57,20 @@ export default {
             user: null
         }
     },
+    methods: {
+        getData(delay){
+            setTimeout(() => {
+                this.user  = this.data[0];
+            }, delay)
+        }
+    },
     mounted () {
-        setTimeout(() => {
-            this.user  = this.data[0];
-        },
-        200);
+        this.getData(200)
         
     },
     watch: {
         $route (to, from){
-            console.log(to);
-            console.log(from);
-            setTimeout(() => {
-                this.user  = this.data[0];
-            },
-            100);
+            this.getData(100);
         }
     }
 }
