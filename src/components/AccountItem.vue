@@ -1,5 +1,5 @@
 <template>
-    <div class="col-sm-3" key="{{data.account_id}}">
+    <div class="col-sm-3" :key="data.account_id">
         <div class="account shadow-sm" :class="(data.account_id == selectedAcc) ? 'selected' : ''"><!-- Selected class-->
             <router-link :to="'/billing/'+ account.account_id" aria-current="true">
                 <strong class="account-name">{{account.first_name}}
