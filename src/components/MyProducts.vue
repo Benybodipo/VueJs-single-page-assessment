@@ -33,11 +33,6 @@
         },
         mounted(){
             this.$store.dispatch('setCurrentAccount', this.$route.params.account_id)
-        },
-        watch: {
-            $route (to, from){
-                // this.getData(100);
-            }
         }
     }
 </script>

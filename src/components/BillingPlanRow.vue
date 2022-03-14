@@ -1,12 +1,12 @@
 <template>
     <tr>
-        <td>13 Dec 2021</td>
+        <td>{{getDate()}}</td>
         <td>
             <span class="badge bg-light text-muted" style="font-weight: normal">Invoice</span>
         </td>
-        <td>$8.00</td>
-        <td>$45.00</td>
-        <td>8993UDEJ</td>
+        <td>£{{getAmount()}}.00</td>
+        <td>£45.00</td>
+        <td>{{getReference()}}</td>
         <td>
             <fa :icon="['fas', 'arrow-right-to-bracket']" class="download-icon"/>
         </td>
@@ -14,7 +14,23 @@
 </template>
 
 <script>
+    import faker from 'faker'
+import moment from 'moment';
     export default {
-        name: 'BillingPlanRow'
+        name: 'BillingPlanRow',
+        mounted () {
+            
+        },
+        methods: {
+            getDate () {
+                return moment(faker.date.recent()).format('DD MMM YYYY')
+            },
+            getAmount() {
+                return Math.floor((Math.random() * 10000) + 10)
+            },
+            getReference() {
+                return faker.random.alphaNumeric(6)
+            }
+        }
     }
 </script>

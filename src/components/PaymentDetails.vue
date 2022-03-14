@@ -6,7 +6,6 @@
                 <p>View details of your next invoice and payment method</p>
             </div>
             <p v-if="user">Next invoice: {{('user.next_invoice_date') ? (require('moment'))(user.next_invoice_date).format('DD MMM YYYY') : 1234}}</p> 
-            <!-- <p>Next invoice: {{Mixins.methods.formatData(user.next_invoice_date)}}</p>  -->
         </div>
         <div class="row row-eq-height m-0" style="max-width: 100%;">
             <div class="col-md-12 col-lg-6 mb-3 current-balance">
@@ -52,11 +51,28 @@
 import Mixins from '@/Mixins';
 import moment from 'moment'
 import faker from 'faker'
+import axios from 'axios';
+
+const url = "http://localhost:3000/accounts";
+const config = {headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}}
 
 export default {
     name: 'PaymentDetails',
     props: ['data', 'details'],
-    
+    methods: {
+        async changePaymentMethod () {
+            let account_id = this.$route.params.account_id;
+            let payment_method = (this.user.payment_method == 'MP') ? 'DD' : 'MP'
+            console.log(this.user.payment_method);
+            try {
+                await axios.patch(`${url}/${account_id}`, {payment_method: payment_method});
+
+                this.user.payment_method = payment_method
+            } catch (e) {
+                console.error(e);
+            }
+        }
+    },    
     computed: {
         user (){
             return this.$store.getters.getCurrentAccount

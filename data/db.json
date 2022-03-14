@@ -89,7 +89,7 @@
       "address_country": "UNITED KINGDOM",
       "address_post_code": "SW8 1SQ",
       "account_status": "Cancelled",
-      "payment_method": "DP",
+      "payment_method": "MP",
       "next_invoice_date": "2022-06-22",
       "balance": 0,
       "products": [
