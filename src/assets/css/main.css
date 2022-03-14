@@ -42,13 +42,18 @@ header {
     color: inherit;
 }
 
-.notification .nav-link::before
+.notification .nav-link .bell-container
+{
+    position: relative;
+}
+
+.notification .nav-link .bell-container::before
 {
     content: '';
     display: inline-block;
     position: absolute;
     top: 3px;
-    right: 7px;
+    right: 1px;
     width: 8px;
     height: 8px;
     background-color: var(--blue);
@@ -168,6 +173,14 @@ aside .list-group-item a
     border-radius: 10px;
     background: #fff;
     
+}
+
+.account a
+{
+    text-decoration: none;
+}
+.account a p {
+    color: #212529;
 }
 
 .account .status
@@ -294,4 +307,39 @@ aside .list-group-item a
     color: var(--blue);
     transform: rotate(90deg);
     font-size: 19px; 
+}
+
+
+@media screen and (max-width: 768px)
+{
+    .nav-item {
+        border: none;
+        
+    }
+
+    .nav-link
+    {
+        text-align: left;
+    }
+
+    .nav-item.notification a
+    {
+        font-size: inherit;
+    }
+    .nav-item.notification
+    {
+        justify-content:flex-start;
+        padding-left: 20px;
+        
+    }
+    .nav-item.notification span:nth-child(2)
+    {
+        display: inline-block !important; 
+        margin-left: 10px; 
+    }
+
+    .nav-item.profile
+    {
+        float: left;
+    }
 }
