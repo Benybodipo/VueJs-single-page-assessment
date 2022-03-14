@@ -1,5 +1,5 @@
 <template>
-    <div class="col-sm-3" v-for="account in accounts" :key="account.account_id" >
+    <div class="col-md-3 col-sm-2" v-for="account in accounts" :key="account.account_id" >
         <AccountItem :data="{name: 'Benito Esteban'}" />
         <!-- {{1234}} -->
     </div>

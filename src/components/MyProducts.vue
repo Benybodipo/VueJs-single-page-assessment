@@ -6,11 +6,11 @@
                 <p>All your products at a glance</p>
             </div>
         </div>
-        <div class="row p-0">
+        <div class="row p-0" v-if="account">
             <div class="col-sm-12" style="padding-left: 40px; padding-right: 40px;">
-                <div v-if="products">
+                <div>
                     <ul class="list-group products-list pl-3 pr-3">
-                        <li class="list-group-item" v-for="product in products" :key="product.product_id">
+                        <li class="list-group-item" v-for="product in account.products" :key="product.product_id">
                             <fa :icon="['fas', 'phone']" v-if="product.product_kind.toLowerCase().trim() == 'voip' || product.product_kind.toLowerCase().trim() == 'telco'"/>
                             <fa :icon="['fas', 'diagram-project']" v-else-if="product.product_kind.toLowerCase().trim() == 'fiber'"/>
                             <fa :icon="['fas', 'laptop']" v-else/>
@@ -26,26 +26,18 @@
 <script>
     export default {
         name: 'MyProducts',
-        props: ['data'],
-        data() {
-            return {
-                products: null
+        computed: {
+            account (){
+                return this.$store.getters.getCurrentAccount
             }
         },
-        methods: {
-            getData(delay) {
-                setTimeout(() => {
-                    this.products  = this.data[0].products;
-                }, delay)
-            }
-        },
-        mounted() {
-            this.getData(200);
+        mounted(){
+            this.$store.dispatch('setCurrentAccount', this.$route.params.account_id)
         },
         watch: {
-        $route (to, from){
-            this.getData(100);
+            $route (to, from){
+                // this.getData(100);
+            }
         }
-    }
     }
 </script>

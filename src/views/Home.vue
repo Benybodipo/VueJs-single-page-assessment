@@ -49,9 +49,9 @@ export default {
     created() {
         setTimeout(() => {
             this.accounts  = this.data;
-            console.log(this.accounts.length);
+            // console.log(this.accounts.length);
         },
-        100);
+        300);
     }
 }
 </script>

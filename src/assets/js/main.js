@@ -1,6 +1,9 @@
 window.onload = function (){
     let elements = document.querySelectorAll('aside .list-group-item');
 
+    // setTimeout(() => {
+    //     highlightActiveLink()
+    // },100)
     Array.from(elements).forEach((element) => {
         let isActive = element.children[0].classList.contains('router-link-active');
 

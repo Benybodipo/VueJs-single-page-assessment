@@ -6,22 +6,22 @@
     </section>
     <!-- Accounts section  -->
     <section id="account-section" class="row">
-        <!-- <Accounts :data="accounts" /> -->
-        <h1 v-if="!accounts">Loading...</h1>
-        <AccountItem v-for="account in data" :key="account.account_id" :data="account" data-name="ben"/>
+        <AccountItem  v-for="account in $store.getters.getAllAccounts" :key="account.account_id" :data="account"/>
     </section>
+    <!-- Payment details and Products -->
     <section class="row row-eq-height" id="payment-and-products-section">
-        <div class="col-sm-7">
-            <PaymentDetails :data="account"/>
+        <div class="col-md-7 mb-3">
+            <PaymentDetails />
         </div>
-        <div class="col-sm-5">
-            <MyProducts :data="account"/>
+        <div class="col-md-5 mb-3">
+            <MyProducts />
         </div>
     </section>
+    <!-- Billing History -->
     <section class="row" id="billing-history-section">
-    <div class="col-12">
-        <BillingHistory />
-    </div>
+        <div class="col-12">
+            <BillingHistory />
+        </div>
     </section>
 </template>
 <script>
@@ -39,32 +39,17 @@ export default {
         'MyProducts': MyProducts,
         'BillingHistory': BillingHistory
     },
-    data() {
-        return {
-            accounts: null,
-            account: null,
-            products: null,
-            single_account: null,
-            id: this.$route.params.account_id
+    computed: {
+        account (){
+            return this.$store.getters.getCurrentAccount
         }
     },
-    methods: {
-        getData(){
-            this.account = this.data.filter((acc) => {
-                return (acc.account_id == this.$route.params.account_id)
-            });
-        }
-    },
-    mounted() {
-        setTimeout(() => {
-            this.accounts = this.data;
-            this.getData();
-        },
-        100);
+    mounted(){
+        this.$store.dispatch('setCurrentAccount', this.$route.params.account_id)
     },
     watch: {
         $route (to, from){
-            this.getData(); 
+            this.$store.dispatch('setCurrentAccount', this.$route.params.account_id)
         }
     }
 }
