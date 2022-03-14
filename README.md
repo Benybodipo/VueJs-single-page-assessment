@@ -1,24 +1,29 @@
-# bonline
+# Bonline
+Single vue js page 
 
-## Project setup
+### Technologies:
+- CSS/Bootstrap
+- HTML 
+- Vue and Vuex
+- Json Server
+- Moment
+- Faker
+
+### Functionalities:
+- Navigate between routes (Home and Billing)
+- Display payment details and products depending on the account
+- Faker for the billing history- Responsiveness 
+
+### Commands:
+1. Install dependencies: 
 ```
 npm install
 ```
-
-### Compiles and hot-reloads for development
+2. Local server: 
 ```
-npm run serve
+npm run serve 
 ```
-
-### Compiles and minifies for production
+3. Json server: 
 ```
-npm run build
+npx json-server --id account_id data/db.json
 ```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
