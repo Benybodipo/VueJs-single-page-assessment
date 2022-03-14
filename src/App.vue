@@ -8,13 +8,13 @@
       <div class="row row-eq-height">
         <aside class="col-sm-2 d-none d-ms-none d-md-none d-lg-block">
             <ul class="list-group" v-if="accounts">
-              <li class="list-group-item i1">
+              <li class="list-group-item i1" :class="($route.name.toLowerCase() == 'home') ? 'active' : ''">
                 <router-link to="/" aria-current="true">
                   <fa :icon="['fas', 'house']" />
                   Home
                 </router-link>
               </li>
-              <li class="list-group-item i2 d-block d-md-block">
+              <li class="list-group-item i2 d-block d-md-block" :class="($route.name.toLowerCase() == 'billing') ? 'active' : ''">
                 <router-link :to="{path: ('/billing/'+accounts[0].account_id)}" aria-current="true">
                   <fa :icon="['fas', 'wallet']" />
                   Billing

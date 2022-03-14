@@ -5,8 +5,8 @@
     </section>
     <section class="row pt-3 pb-3">
         <div class="col-sm-12">
-            <div class="component" v-if="accounts">
-                <table class="table" v-if="accounts">
+            <div class="component" v-if="$store.getters.getAllAccounts">
+                <table class="table" v-if="$store.getters.getAllAccounts">
                     <thead>
                         <tr>
                             <th scope="col">#ID</th>
@@ -18,7 +18,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr v-for="account in accounts" :key="account.acount_id">
+                        <tr v-for="account in $store.getters.getAllAccounts" :key="account.acount_id">
                             <th>{{account.account_id}}</th>
                             <td>{{account.first_name}}</td>
                             <td>{{account.last_name}}</td>
